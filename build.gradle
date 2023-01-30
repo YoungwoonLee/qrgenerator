@@ -1,0 +1,34 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'com.chandler'
+version = '0.0.1'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//스프링부트에서 JSP사용을 위한 jasper
+	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+	// zebra crossing으로 qr생성을 위한 라이브러리 core,javase용
+	implementation group: 'com.google.zxing', name: 'core', version: '3.5.0'
+	implementation group: 'com.google.zxing', name: 'javase', version: '3.5.0'
+	
+	//임시로 프론트 UI필요해서 타임리프를 사용함.
+	//implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compileOnly 'org.projectlombok:lombok'
+	
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
